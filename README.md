@@ -53,3 +53,7 @@ is provided by RHVoice itself).
 
 The main library is distributed under [LGPL v2.1](https://www.gnu.org/licenses/lgpl-2.1.html) or later.
 some components and voices use other licenses.for more information please read [license.md](license.md) file.
+
+## Example 
+
+RHVoice-test -i test.txt -p elena -o - 2>/dev/null | aplay - 2>/dev/null

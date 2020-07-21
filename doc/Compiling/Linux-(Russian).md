@@ -31,6 +31,11 @@
 ```bash
 scons
 ```
+или
+
+```bash
+scons -j8 prefix=/usr
+```
 
 Вы можете изменить параметры сборки, например, передать дополнительные
 опции компилятору. Для получения более подробной информации
@@ -46,12 +51,26 @@ scons -h
 
 ```bash
 # scons install
+# sudo ldconfig
+```
+
+или для Debian/Ubuntu
+
+```bash
+# sudo checkinstall scons prefix=/usr install
+# sudo ldconfig
 ```
 
 Теперь вы можете проверить работоспособность синтезатора:
 
 ```bash
-echo test|RHVoice-test
+echo "привет" | RHVoice-test -p elena -o - 2>/dev/null | aplay - 2>/dev/null
+```
+
+## Удаление
+
+```bash
+# sudo scons --clean install RHVoice
 ```
 
 ## Подключение к Speech Dispatcher

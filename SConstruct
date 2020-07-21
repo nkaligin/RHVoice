@@ -220,6 +220,7 @@ def clone_base_env(base_env,user_vars,arch=None):
     if "gcc" in env["TOOLS"]:
         env.MergeFlags("-pthread")
         env.AppendUnique(CXXFLAGS=["-std=c++11"])
+        env.AppendUnique(CXXFLAGS=["-Wno-deprecated-declarations"])
         env.AppendUnique(CFLAGS=["-std=c99"])
     if sys.platform=="win32":
         bits="64" if arch.endswith("64") else "32"
@@ -276,7 +277,7 @@ def configure(env):
             conf.CheckSpdVersion()
     else:
         env["audio_libs"]=[]
-#        has_giomm=conf.CheckPKG("giomm-2.4")
+        has_giomm=conf.CheckPKG("giomm-2.4")
     if env["PLATFORM"]=="win32":
         env.AppendUnique(LIBS="kernel32")
     conf.Finish()
